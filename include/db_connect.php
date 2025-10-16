@@ -19,6 +19,7 @@ if ( !isset($conn) )
       echo "Failed to connect to MySQL: " . $conn->connect_error;
       exit();
    }
+$conn->set_charset("utf8mb4");
 }
 
 // Get DB Settings into variables
