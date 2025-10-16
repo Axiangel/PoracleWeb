@@ -11,7 +11,7 @@
     foreach ($_POST as $key => $value) {
       if (substr($key, 0, 5) === "area_") {
         $area = substr($key, 5);
-	$area = strtolower($area);
+	$area = mb_strtolower($area);
 	$area = str_replace('%20', ' ', $area);
         array_push($area_list, "\"$area\"");
       }
