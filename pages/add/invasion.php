@@ -115,7 +115,7 @@ if ( $disable_invasions == "True" ) {
                                                  id='grunt_<?php echo $grunt_gender; ?>_<?php echo $grunt_name; ?>' />
                                              <label for='grunt_<?php echo $grunt_gender; ?>_<?php echo $grunt_name; ?>'>
                                                  <img src='<?php echo $uicons_reward; ?>/pokestop/0_i<?php echo $grunt_id; ?>.png' />
-                                                 <br><?php echo ucfirst(i8ln(strtolower($grunt_name))); ?>
+                                                 <br><?php echo ucfirst(i8ln(mb_strtolower($grunt_name))); ?>
                                              </label>
 					</li>
 
@@ -148,7 +148,7 @@ if ( $disable_invasions == "True" ) {
                                                  id='grunt_<?php echo $grunt_gender; ?>_<?php echo $grunt_name; ?>' />
                                              <label for='grunt_<?php echo $grunt_gender; ?>_<?php echo $grunt_name; ?>'>
                                                  <img src='<?php echo $uicons_reward; ?>/invasion/<?php echo $grunt_id; ?>.png' />
-   				     	         <br><?php echo ucfirst(i8ln(strtolower($grunt_name))); ?>
+   				     	         <br><?php echo ucfirst(i8ln(mb_strtolower($grunt_name))); ?>
                                              </label>
 				        </li>
 				<?php } } ?>
