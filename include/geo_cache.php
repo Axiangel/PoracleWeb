@@ -20,9 +20,9 @@ if (file_exists("./.cache") && @$disable_geomap <> 'True') {
 
    foreach ($json['areas'] as $area_name => $hash) { 
 
-      $geo_hash[strtoupper($area_name)] = $hash;
+      $geo_hash[mb_strtoupper($area_name)] = $hash;
       $encode_name = rawurlencode($area_name);
-      $area_name = strtoupper(str_replace(' ', '_', $area_name));
+      $area_name = mb_strtoupper(str_replace(' ', '_', $area_name));
 
       // Call Each Geofence and check hash
 
