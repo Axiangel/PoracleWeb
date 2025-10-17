@@ -110,7 +110,7 @@ function get_mons($pokemon_id) {
 
 function get_matching_ids($search) {
 
-    $search = strtolower($search);
+    $search = mb_strtolower($search);
     global $monsters_json;
     $json = json_decode($monsters_json, true);
 
@@ -118,13 +118,13 @@ function get_matching_ids($search) {
     foreach ($json as $name => $pokemon) {
 	    $arr = explode("_", $name, 2);
 	    // Match on Pokemon Name
-	    if ( strpos(strtolower(translate_mon($pokemon['name'])),$search) !== false )
+	    if ( strpos(mb_strtolower(translate_mon($pokemon['name'])),$search) !== false )
 	    {
 		    array_push($ids,$arr['0']);
 	    } 
 	    // Match on Pokemon Type
 	    foreach ($pokemon['types'] as $id => $type) {
-		    if ( strpos(strtolower(i8ln($type['name'])),$search) !== false )
+		    if ( strpos(mb_strtolower(i8ln($type['name'])),$search) !== false )
 		    {
 			    array_push($ids,$arr['0']);
 		    }
