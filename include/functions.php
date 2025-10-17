@@ -267,11 +267,11 @@ function get_grunt($type,$gender) {
    $grunts=array();
 
    foreach ($json as $key => $value) { 
-	   if ( strtoupper($value['type']) == strtoupper($type) && $value['gender'] == $gender ) 
+	   if ( mb_strtoupper($value['type']) == mb_strtoupper($type) && $value['gender'] == $gender ) 
 	   { 
                    return $key;
 	   }
-	   else if ( strtoupper($value['type']) == strtoupper($type) && $gender == 0 )
+	   else if ( mb_strtoupper($value['type']) == mb_strtoupper($type) && $gender == 0 )
            {
                    return $key;
            }
@@ -426,7 +426,7 @@ function get_address($lat, $lon) {
             if ( "$key" == "town") { $town=$value2;} 
             if ( "$key" == "city") { $city=$value2;} 
             if ( "$key" == "city_district") { $city_district=$value2;} 
-            if ( "$key" == "country_code") { $country=strtoupper($value2);} 
+            if ( "$key" == "country_code") { $country=mb_strtoupper($value2);} 
          }
       }
       if ( @$city_district <> "" ) {  $city=$city_district; }
