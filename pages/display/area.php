@@ -198,7 +198,7 @@
                                                     $area = str_replace('"', '', $area);
                                                     $area = str_replace('[', '', $area);
                                                     $area = str_replace(']', '', $area);
-                                                    $area = strtoupper($area);
+                                                    $area = mb_strtoupper($area);
 						    $hash = $geo_hash[$area];  
 						    include "modal/areapic_modal.php";
                                                 ?>
