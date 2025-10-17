@@ -46,7 +46,7 @@
         ?>
 
          <a class="dropdown-item" href="actions/set_language.php?lng=<?php echo $language; ?>">
-            <img src="img/<?php echo $language; ?>.png" style="height:30px;width:30px"> <?php echo strtoupper(i8ln("$language")); ?>
+            <img src="img/<?php echo $language; ?>.png" style="height:30px;width:30px"> <?php echo mb_strtoupper(i8ln("$language")); ?>
          </a>
          <div class="dropdown-divider"></div>
 
