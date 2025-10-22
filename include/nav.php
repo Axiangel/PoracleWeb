@@ -102,12 +102,12 @@
               <?php } ?>
            <?php } ?>
 
-
 	   <?php if ( isset($custom_profile_msg) ) { ?>
               <button type='button' class='btn mt-3' style='width:100%; background-color:white; border: 2px solid darkgreen; padding:0px;'>
               <font color=darkgreen size=2><?php echo $custom_profile_msg; ?></font>
               </button>
            <?php } ?>
+
 
 	   <?php if ($_SESSION['type']=="discord:user" && !isset($admin_alarm) && $enable_telegram == "True") { ?>
 	   <a href='<?php echo $redirect_url; ?>?type=display&page=migrate'>
