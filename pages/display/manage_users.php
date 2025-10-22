@@ -1,7 +1,9 @@
 <?php
-if ( !isset($_SESSION['admin_id']) && !isset($_SESSION['users_admin']) ) { 
-	header("Location: $redirect_url"); 
-	exit();
+if (!isset($_SESSION['admin_id']) && !isset($_SESSION['channels_admin'])) {
+header('Content-Type: text/html; charset=utf-8');
+        header("Location: $redirect_url"); 
+
+        exit();
 } 
 
 $num_dbs=0;
@@ -72,6 +74,8 @@ if (@$admin_disable_userlist <> "True" ) {
       // Get Discord Users
      
       $conn = new mysqli($dbhost.":".$dbport, $dbuser, $dbpass, $db);
+      // Set character set
+      $conn->set_charset("utf8mb4");
       $sql = "select id, name, type FROM humans WHERE type like 'discord:user' ORDER by type,name";
       $result = $conn->query($sql);
       ?>
@@ -105,8 +109,9 @@ if (@$admin_disable_userlist <> "True" ) {
       <?php } 
 
       // Get Discord Users
-
       $conn = new mysqli($dbhost.":".$dbport, $dbuser, $dbpass, $db);
+      // Set character set
+      $conn->set_charset("utf8mb4");
       $sql = "select id, name, type FROM humans WHERE type like 'telegram:user' ORDER by type,name";
       $result = $conn->query($sql);
       ?>

@@ -28,15 +28,19 @@ if ( isset($_GET['action']) && $_GET['action'] == "delete" ) {
 
 } else {
 
-   $street = str_replace(" ", "%20", $_POST['street']);
-   $city = str_replace(" ", "%20", $_POST['city']);
+$address = urlencode($_POST['street'] . ' ' . $_POST['city']);
+//$filepath = rtrim($_SESSION['providerURL'], '/') . "/search?addressdetails=1&q=$address&format=json&limit=1";
+$filepath=$_SESSION['providerURL']."/search?addressdetails=1&q=$address&format=json&limit=1";
 
-   $filepath=$_SESSION['providerURL']."/?addressdetails=1&q=".$street."%20".$city."&format=json&limit=1";
-   if ( strlen($_SESSION['staticKey']) == 32  ) { 
+        if ( strlen($_SESSION['staticKey']) == 32  ) { 
 	   $filepath.="&key=".$_SESSION['staticKey'];
    }
 
-   $request = file_get_contents($filepath);
+   //$request = file_get_contents($filepath);
+$request = file_get_contents($filepath);
+$request = mb_convert_encoding($request, 'UTF-8', 'auto'); // Ensures proper encoding
+$json = json_decode($request, true);
+
 
    if ( $request == "[]" ) { 
       header("Location: $redirect_url?type=display&page=area&return=error_update_location");

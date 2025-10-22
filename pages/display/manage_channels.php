@@ -1,6 +1,8 @@
 <?php
 if (!isset($_SESSION['admin_id']) && !isset($_SESSION['channels_admin'])) {
+header('Content-Type: text/html; charset=utf-8');
 	header("Location: $redirect_url"); 
+
 	exit();
 } 
 
@@ -9,6 +11,7 @@ $dbnames = explode(",", $dbname);
 foreach ($dbnames as &$db) {
 	$num_dbs=$num_dbs+1;
 }
+
 
 ?>
 
@@ -54,8 +57,10 @@ if ( isset($_SESSION['admin_id']) || isset($_SESSION['poracle_admin']) || count(
    foreach ($dbnames as &$db) {
    
       $conn = new mysqli($dbhost.":".$dbport, $dbuser, $dbpass, $db);
+// Set character set
+$conn->set_charset("utf8mb4");
       $sql = "select id, name, notes, type FROM humans WHERE type like 'discord:channel' ORDER by name";
-      $result = $conn->query($sql); 
+      $result = $conn->query($sql);
       ?>
    
    <?php if ($result->num_rows <> 0) { ?>
@@ -119,7 +124,9 @@ if ( isset($_SESSION['admin_id']) || isset($_SESSION['poracle_admin']) || count(
    foreach ($dbnames as &$db) {
    
       $conn = new mysqli($dbhost.":".$dbport, $dbuser, $dbpass, $db);
-         		       $sql = "select id, name, notes, type FROM humans WHERE type in ('telegram:channel','telegram:group') ORDER by name";
+// Set character set
+      $conn->set_charset("utf8mb4");
+      $sql = "select id, name, notes, type FROM humans WHERE type in ('telegram:channel','telegram:group') ORDER by name";
       $result = $conn->query($sql);
       ?>
    
@@ -183,6 +190,8 @@ if ( isset($_SESSION['admin_id']) || isset($_SESSION['poracle_admin']) || count(
    foreach ($dbnames as &$db) {
    
       $conn = new mysqli($dbhost.":".$dbport, $dbuser, $dbpass, $db);
+// Set character set
+$conn->set_charset("utf8mb4");
       $sql = "select id, name, notes, type FROM humans WHERE type like 'webhook' ORDER by name";
       $result = $conn->query($sql);
       ?>
