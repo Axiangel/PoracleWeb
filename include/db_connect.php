@@ -15,6 +15,8 @@ if (!isset($_SESSION['dbname']))
 if ( !isset($conn) )
 {
    $conn = new mysqli($dbhost.":".$dbport, $dbuser, $dbpass, $_SESSION['dbname']);
+// Set character set
+$conn->set_charset("utf8mb4");
    if ($conn->connect_errno) {
       echo "Failed to connect to MySQL: " . $conn->connect_error;
       exit();
